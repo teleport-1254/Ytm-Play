@@ -124,7 +124,6 @@ const Info = ({ infoData, whenFinishedPlaying, prevTrack, setAppLoadingState }: 
                 <div className='position-fixed bottom-0 end-0 m-2'>
                     <Toast show={errorToast} onClose={() => { setErrorToast(false) }} className='border border-0'>
                         <Toast.Header className='bg-danger border border-0'>
-                            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                             <strong className="me-auto text-white">Error while fetching stream</strong>
                         </Toast.Header>
                         <Toast.Body className='bg-danger-subtle border border-0'>
