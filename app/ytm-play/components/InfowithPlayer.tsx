@@ -32,6 +32,7 @@ const Info = ({ infoData, whenFinishedPlaying, prevTrack, setAppLoadingState }: 
                         setErrorToast(true);
                         setErrorVideoId(infoData[0])
                         setErrorTitle(infoData[2]);
+                        setAppLoadingState(false);
 
                         whenFinishedPlaying();
                     }
@@ -105,6 +106,8 @@ const Info = ({ infoData, whenFinishedPlaying, prevTrack, setAppLoadingState }: 
                         onEnded={whenFinishedPlaying}
                         showSkipControls={true}
                         showJumpControls={false}
+                        onError={(e) => setErrorToast(true)}
+                        onPlayError={(e) => setErrorToast(true)}
                         onClickPrevious={() => {
                             prevTrack();
                             setSrc(undefined);
