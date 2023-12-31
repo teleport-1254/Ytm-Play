@@ -1,0 +1,94 @@
+html {
+    margin: 0;
+}
+
+:root {
+    --bg1: #2e2e2e;
+    --trans: #00000000;
+}
+
+/* text*/
+.one-line-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 45vw;
+}
+
+.one-line-text-w-275 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 275px;
+}
+
+.one-line-text-w-50 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 35vw;
+}
+
+.one-line-text-w-100 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 70vw;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* image */
+.responsive-video-thumbnail {
+    height: clamp(4.375rem, -0.8423913043478262rem + 26.08695652173913vw, 6.25rem);
+}
+
+/* ctk */
+.queue-list-ctk-css {
+    margin-top: 5vh;
+    width: 9.0625rem;
+    width: clamp(9.0625rem, -0.625rem + 48.4375vw, 57.5rem);
+    max-height: 30%;
+    margin-left: 0%;
+    background-color: black;
+}
+
+.alpha-dark-ctk {
+    background-color: #000000b2;
+}
+
+.glow-color-animation {
+    background: linear-gradient(45deg, #6d3e44, #444c67, #5a4835, #355049);
+    background-size: 300% 300%;
+    animation: colorAnimation 30s ease-in-out infinite alternate;
+}
+
+.glow-color-animation-text {
+    background: -webkit-linear-gradient(160deg, #ff96a4, #a3b8ff, #aaffe8, #ffd9b0);
+    background-size: 300% 300%;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorAnimation 6s ease-in-out infinite alternate;
+}
+
+@keyframes colorAnimation {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.dark-subtle-top-bottom-gradiant {
+    background-image: linear-gradient(180deg, #2b3035, transparent);
+}
