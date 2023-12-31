@@ -41,7 +41,7 @@ const SearchResultPlaylist = ({ searchResult, gettingInfoForShowingPlayingVideos
             .then((data: PlaylistFull) => {
                 setPlaylistArtist(data.artist != undefined ? data.artist.name : "none");
                 setName(data.name);
-                setPlaylistThumbnail(data.thumbnails != undefined ? data.thumbnails[1].url : "assets/images/empty.png");
+                setPlaylistThumbnail(data.thumbnails[1] != undefined ? data.thumbnails[1].url : data.thumbnails[0].url);
                 setTrackCount(data.videoCount);
                 // console.log(data);
             });
