@@ -1,14 +1,8 @@
 // "use server"
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { HttpsProxyAgent } from 'https-proxy-agent';
 import { resolve } from 'path';
 import YTMusic from "ytmusic-api";
 import ytdl from 'ytdl-core';
-
-
-type ResponseData = {
-    message: string
-}
 
 export const config = {
     api: {
@@ -174,13 +168,9 @@ export default async function handler(
         if (typeof videoId === "string") {
             try {
                 const videourl = `https://www.youtube.com/watch?v=${videoId}`;
-
-                const proxy = 'http://111.111.111.111:8080';
-                const agent = new HttpsProxyAgent(proxy);
-
-                const videoInfo = await ytdl.getInfo(videourl, { requestOptions: { agent } });
-                
+                const videoInfo = await ytdl.getInfo(videourl);
                 const audioFormats = ytdl.filterFormats(videoInfo.formats, 'audioonly');
+                
                 resolve();
                 res.json(audioFormats);
                 res.status(200).end();
