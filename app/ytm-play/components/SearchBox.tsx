@@ -1,12 +1,10 @@
 import { ChangeEvent, useState } from 'react';
-import ReactLoading from 'react-loading';
 import SearchSuggestions from './SearchSuggestions';
 import SearchType from './SearchType';
 import SearchResultArtist from "./SearchResultArtist";
 import SearchResultSong from "./SearchResultSong";
 import SearchResultVideo from "./SearchResultVideo";
 import SearchResultPlaylist from "./SearchResultPlaylist";
-import '../assets/css/CustomeComponentStyle.css';
 import { SearchBoxProps } from '../typings/intefaces';
 import { ArtistBasic, SearchResult, VideoDetailed } from 'ytmusic-api';
 
@@ -102,41 +100,50 @@ const SearchBox = ({ gettingInfo, settingQueue, setAppLoadingState }: SearchBoxP
     return (
         <>
             <div className='sticky-top'>
-                <div className='w-100 p-3 bg-body-tertiary'>
-                    <div className='d-flex justify-content-center'>
-                        <input type="text"
-                            className="fs-5 border-0 p-1 ps-3 pe-3 w-75 rounded-start-pill bg-dark"
-                            placeholder="Search"
-                            onChange={(e) => {
-                                handleChange(e);
-                            }}
-                            onKeyPress={handleKeyPress}
-                            value={searchQuery}
-                            aria-describedby="button-addon2" />
-                        <button className="btn rounded-end-pill bg-dark" type="button" id="button-addon2"
-                            onClick={() => { handleSearchBtn(searchType) }}>
-                            <img src="assets/images/search.svg" alt="search" width={25} />
-                        </button>
+                <div className='p-3 bg-body'>
+
+                    <div className='d-flex justify-content-center w-100'>
+                        <div className='d-flex bg-dark-subtle rounded-pill w-75'>
+                            <a href="/">
+                                <img src="assets/images/favicon.png" className='object-fit-cover img' width={50} height={50} alt="Ytm-Play" title='Ytm-Play' />
+                            </a>
+                            <input type="text"
+                                className="fs-5 border-0 p-1 ps-3 pe-3 w-100 bg-transparent"
+                                placeholder="Search"
+                                onChange={(e) => {
+                                    handleChange(e);
+                                }}
+                                onKeyPress={handleKeyPress}
+                                value={searchQuery}
+                                aria-describedby="button-addon2" />
+                            <button className="btn bg-transparent" type="button" id="button-addon2"
+                                onClick={() => { handleSearchBtn(searchType) }}>
+                                <img src="assets/images/search.svg" alt="search" width={25} />
+                            </button>
+                        </div>
                     </div>
+
                     {(searchQuery != '' && !searchBtnClicked) && <SearchSuggestions suggestions={suggestions}
                         gettingClikedQuery={handleClickFromSuggestion} />}
                 </div>
+
                 <SearchType gettingSelectedType={gettingSelectedType} />
             </div>
 
             <div className=''>
 
-                {(searchQuery == '' && !searchBtnClicked) &&
-                    <div className='position-absolute top-50 start-50 h-100 w-100 bg-dark-subtle translate-middle'>
-                        <div className='text-center text-nowrap position-relative top-50 glow-color-animation-text'>
-                            <h2 className='text-break text-nowrap fs-3 fw-semibold'>Play what u like!</h2>
-                            <h5 className='text-break text-nowrap fs-6 text-body-tertiary'>Search for songs, videos, <br />
-                                artists and playlists</h5>
+                {(!searchBtnClicked) &&
+                    <div className='position-absolute top-50 start-50 h-100 w-100 bg-black translate-middle'>
+                        <div className='text-center text-nowrap lh-1 position-relative top-50 glow-color-animation-text'>
+                            <h1 className='text-break text-nowrap m-0 display-2'>Ytm-Play</h1>
+                            <small className='text-break text-nowrap fs-6 m-0 fw-semibold'>Play what u like!</small> <br />
+                            <small className='text-break text-nowrap m-0 text-body-tertiary'>Search for songs, videos, <br />
+                                artists and playlists</small>
                         </div>
                     </div>
                 }
 
-                <div className='pb-5'>
+                <div className='pb-5 m-2 mb-0'>
                     {(searchQuery != '' && searchBtnClicked && searchType == 'SONG') &&
                         <SearchResultSong searchResult={searchResult} gettingInfo={gettingInfoFromResult} setAppLoadingState={setAppLoadingState} />}
 

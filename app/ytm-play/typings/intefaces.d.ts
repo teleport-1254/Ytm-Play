@@ -5,7 +5,6 @@ export interface SearchBoxProps {
 }
 
 export interface OptionBoxProps {
-    changeTab: (tab: "HOME" | "SEARCH") => void;
     queue: Array<Array<string>>;
     songIndex: number;
     emptyQueueBtn: () => void;

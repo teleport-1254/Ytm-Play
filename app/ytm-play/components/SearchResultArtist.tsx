@@ -46,7 +46,7 @@ const SearchResultArtist = ({ searchResult, gettingInfoForShowingPlayingVideos, 
 
     const handleClick = (artistId: string) => {
         // gettingInfo(artistId, title, author, thumbnail, trackCount);
-        
+
         fetch('api/ytmusic?method=getArtist&artistId=' + artistId)
             .then(data => data.json())
             .then((data: ArtistFull) => {
@@ -59,7 +59,7 @@ const SearchResultArtist = ({ searchResult, gettingInfoForShowingPlayingVideos, 
                     songs.push(addDurationFieldSongDetailed(item));
                 }))
                 setTopSongs(songs);
-                
+
                 let videos: Array<VideoDetailed> = [];
                 data.topVideos.map(((item) => {
                     videos.push(addDurationFieldVideoDetailed(item));
@@ -80,33 +80,35 @@ const SearchResultArtist = ({ searchResult, gettingInfoForShowingPlayingVideos, 
                 <div className="rounded-0 list-group position-relative mb-5 pb-5 z-0">
 
                     {searchResult == undefined &&
-                        loading()
+                        loading(false, true)
                     }
 
-                    <div className='mb-5 pb-5 position-relative bg-dark-subtle d-flex'
+                    <div className='mb-5 pb-5 position-relative d-flex'
                         style={{
                             display: 'flex',
                             flexWrap: 'wrap'
                         }}>
                         {listData.map((item) => (
-                            <a key={item[0]} title={item[1]} className="list-group-item border border-0 bg-dark-subtle" aria-current="true">
-                                <div className="d-flex w-100 ">
+                            <a key={item[0]}
+                                title={item[1]}
+                                onClick={() => {
+                                    setArtistClicked(true);
+                                    handleClick(item[0]);
+                                }}
+                                className="list-group-item p-1 border border-0 bg-black">
+
+                                <div className="d-flex align-items-center w-100 ">
                                     <div className='position-relative'>
                                         <img src={item[2] || "assets/images/empty.png"}
-                                            className="object-fit-cover img rounded-2"
+                                            className="object-fit-cover img square-img"
                                             height={100} width={100} alt={item[1]}
                                             onError={(e) => {
                                                 e.currentTarget.src = "assets/images/empty.png";
                                             }} />
                                     </div>
 
-                                    <div className="flex-column pt-2" onClick={
-                                        () => {
-                                            setArtistClicked(true);
-                                            handleClick(item[0]);
-                                        }
-                                    }>
-                                        <h3 className="p-3 pt-0 pb-0 one-line-text text-break">{item[1]}</h3>
+                                    <div className="ms-2 p-1">
+                                        <h3 className="p-0 m-0 fluid-text-h3 one-line-text text-break">{item[1]}</h3>
                                     </div>
                                 </div>
                             </a>

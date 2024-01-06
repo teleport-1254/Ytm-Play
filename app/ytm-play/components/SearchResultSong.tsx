@@ -16,14 +16,14 @@ const SearchResultSong = ({ searchResult, gettingInfo, setAppLoadingState }: Sea
                 item.artists.map((item: ArtistBasic) => {
                     artists.push(item.name)
                 })
-    
+
                 let temp: Array<string>;
-    
+
                 temp = [
-                    item.videoId, 
-                    item.name, 
-                    artists.join(', '), 
-                    (item.duration != 0) ? secToTime(item.duration) : "", 
+                    item.videoId,
+                    item.name,
+                    artists.join(', '),
+                    (item.duration != 0) ? secToTime(item.duration) : "",
                     item.thumbnails[1]?.url
                 ];
                 // console.log(temp);
@@ -40,7 +40,7 @@ const SearchResultSong = ({ searchResult, gettingInfo, setAppLoadingState }: Sea
     }
 
     return (
-        <div className="rounded-0 list-group position-relative mb-5 pb-5 z-0" aria-hidden="true">
+        <div className="rounded-0 list-group position-relative mb-5 pb-5 z-0">
 
             {searchResult == null &&
                 loading()
@@ -48,27 +48,28 @@ const SearchResultSong = ({ searchResult, gettingInfo, setAppLoadingState }: Sea
 
             <div className='mb-5 pb-5'>
                 {listData.map((item) => (
-                    <a key={item[0]} title={item[1]} onClick={
-                        () => { handleClick(item[0], item[1], item[2], item[4]) }
-                    } className="list-group-item border border-0 bg-dark-subtle" aria-current="true">
-                        <div className="d-flex w-100">
+                    <a key={item[0]} title={item[1]}
+                        onClick={
+                            () => { handleClick(item[0], item[1], item[2], item[4]) }
+                        }
+                        className="list-group-item p-1 border border-0 bg-black">
+                            
+                        <div className="d-flex align-items-center w-100">
 
                             <div className='position-relative'>
                                 <img src={item[4] || "assets/images/empty.png"}
-                                    className="object-fit-cover img rounded-2"
-                                    height={100}
-                                    width={100}
+                                    className="object-fit-cover img square-img"
                                     alt={item[1]}
                                 />
                                 {!item[4] &&
                                     <small className='position-absolute top-50 start-50 translate-middle text-center fw-semibold'>Some error occured!</small>
                                 }
-                                <small className='position-absolute bottom-0 start-0 m-1 ps-1 pe-1 fw-semibold rounded-2 alpha-dark-ctk'>{item[3]}</small>
                             </div>
 
-                            <div className="flex-column pt-2">
-                                <h3 className="p-3 pt-0 pb-1 one-line-text text-break">{item[1]}</h3>
-                                <h5 className="p-3 pt-0 pb-1 m-0 one-line-text text-break">{item[2]}</h5>
+                            <div className="ms-2 p-1">
+                                <h3 className="p-0 m-0 fluid-text-h3 one-line-text text-break">{item[1]}</h3>
+                                <h5 className="p-0 m-0 fluid-text-h5 one-line-text text-break text-body-secondary">{item[2]}</h5>
+                                <p className='p-0 m-0 fluid-text-small text-body-secondary'>{item[3]}</p>
                             </div>
                         </div>
                     </a>

@@ -2,11 +2,8 @@ import Info from './InfowithPlayer';
 // import { useState } from 'react';
 import { OptionBoxProps } from '../typings/intefaces.js';
 import ReactLoading from 'react-loading';
-import { useState } from 'react';
 
-const OptionBox = ({ changeTab, queue, songIndex, emptyQueueBtn, removeSong, setItemClicked, setAppLoadingState }: OptionBoxProps) => {
-
-    const [tab, setTab] = useState<"HOME" | "SEARCH">('HOME');
+const OptionBox = ({ queue, songIndex, emptyQueueBtn, removeSong, setItemClicked, setAppLoadingState }: OptionBoxProps) => {
 
     // can be used for next track, too
     const finishedPlaying = () => {
@@ -33,34 +30,6 @@ const OptionBox = ({ changeTab, queue, songIndex, emptyQueueBtn, removeSong, set
     return (
         <>
             <div className='postion-relative'>
-                <div className='position-fixed'>
-                    <div className='d-flex w-100 vertical-text pb-4 display-5 fw-bold glow-color-animation-text'>
-                        Ytm_Play
-                    </div>
-                    <div className={
-                        tab === "HOME" ?
-                            'd-flex fs-4 vertical-text pb-4' :
-                            'd-flex fs-4 vertical-text pb-4 text-body-tertiary'
-                    }
-                        onClick={() => {
-                            changeTab("HOME");
-                            setTab("HOME");
-                        }}>
-                        Home
-                    </div>
-
-                    <div className={
-                        tab === "SEARCH" ?
-                            'd-flex fs-4 vertical-text pb-4' :
-                            'd-flex fs-4 vertical-text pb-4 text-body-tertiary'
-                    }
-                        onClick={() => {
-                            changeTab("SEARCH");
-                            setTab("SEARCH");
-                        }}>
-                        Search
-                    </div>
-                </div>
 
                 {songIndex > -1 && <Info setAppLoadingState={setAppLoadingState} infoData={queue[songIndex]} whenFinishedPlaying={finishedPlaying} prevTrack={prevTrack} />}
 
@@ -95,13 +64,6 @@ const OptionBox = ({ changeTab, queue, songIndex, emptyQueueBtn, removeSong, set
                                                     <h5 className='m-0 p-0 ps-2 one-line-text-w-275'>{item[2]}</h5>
                                                     <small className='m-0 p-0 ps-2 one-line-text-w-30'>{item[3]}</small>
                                                 </div>
-                                                {/* <img onClick={() => {
-                                                    if (songIndex > index) {
-                                                        setItemClicked(0);
-                                                    }
-                                                    removeSong(index);
-                                                }}
-                                                    className='m-1' src="assets/images/remove.svg" alt="remove all" title='Remove all Songs' width={20} height={20} /> */}
                                             </div>
                                         </li>
                                     ))
