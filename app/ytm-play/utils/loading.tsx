@@ -19,9 +19,17 @@ const loading = (video: boolean = false, artist: boolean = false) => {
                         }
                     </div>
                     <div className="p-1 ms-2">
-                        <Skeleton className='rounded-0 mb-1 fluid-text-h3 one-line-text' />
+                        <Skeleton className={
+                            video ?
+                                'rounded-0 mb-1 fluid-text-h3 one-line-text-video' :
+                                'rounded-0 mb-1 fluid-text-h3 one-line-text'
+                        } />
                         {!artist &&
-                            <Skeleton className='rounded-0 fluid-text-h5 one-line-text' />
+                            <Skeleton className={
+                                video ?
+                                    'rounded-0 mb-1 fluid-text-h5 one-line-text-video' :
+                                    'rounded-0 mb-1 fluid-text-h5 one-line-text'
+                            } />
                         }
                     </div>
                 </div>
