@@ -19,8 +19,8 @@ html {
 }
 
 .fluid-text-small {
-    font-size: 0.5625rem;
-    font-size: clamp(0.5625rem, 0.42613636363636365rem + 0.6818181818181818vw, 0.9375rem);
+    font-size: 0.75rem;
+    font-size: clamp(0.75rem, 0.7125rem + 0.1875vw, 0.9375rem);
 }
 
 .one-line-text {
@@ -29,6 +29,14 @@ html {
     text-overflow: ellipsis;
     width: 14.0625rem;
     width: clamp(14.0625rem, -1.875rem + 79.6875vw, 93.75rem);
+}
+
+.one-line-text-video {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 10.625rem;
+    width: clamp(10.625rem, -6rem + 83.125vw, 93.75rem);
 }
 
 .one-line-text-w-275 {
