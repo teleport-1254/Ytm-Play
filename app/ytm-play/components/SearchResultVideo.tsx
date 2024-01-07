@@ -50,7 +50,7 @@ const SearchResultVideo = ({ searchResult, gettingInfo, setAppLoadingState }: Se
                     <a key={index} title={item[1]} onClick={
                         () => { handleClick(item[0], item[1], item[2], item[4]) }
                     } className="list-group-item p-1 border border-0 bg-black" aria-current="true">
-                        <div className="d-flex w-100 ">
+                        <div className="d-flex align-items-center w-100 ">
 
                             <div className='position-relative'>
                                 <img src={item[4] || "assets/images/empty.png"}
@@ -65,8 +65,8 @@ const SearchResultVideo = ({ searchResult, gettingInfo, setAppLoadingState }: Se
                             </div>
 
                             <div className="ms-3">
-                                <h3 className="p-0 m-0 fluid-text-h3 one-line-text text-break">{item[1]}</h3>
-                                <h5 className="p-0 m-0 fluid-text-h5 one-line-text text-break text-body-secondary">{item[2]}</h5>
+                                <h3 className="p-0 m-0 fluid-text-h3 one-line-text-video text-break">{item[1]}</h3>
+                                <h5 className="p-0 m-0 fluid-text-h5 one-line-text-video text-break text-body-secondary">{item[2]}</h5>
                                 <p className='p-0 m-0 fluid-text-small text-body-secondary'>{item[3]}</p>
                             </div>
                         </div>
